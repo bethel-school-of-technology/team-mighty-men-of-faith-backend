@@ -4,6 +4,7 @@ import morgan from 'morgan';
 // import vehicleRoutes from './routes/vehicleRoutes';
 // import reservationRoutes from './routes/reservationRoutes';
 import userRoutes from './routes/userRoutes';
+import vehicleRoutes from './routes/vehicleRoutes';
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(express.urlencoded({extended: true}));
 // app.use('/api/vehicles', vehicleRoutes);
 // app.use('/api/reservation', reservationRoutes);
 app.use('/api/users', userRoutes);
+app.use('/vehicle', vehicleRoutes);
 
 app.use((req: Request, res: Response, next: NextFunction) => {
     res.status(404).end();

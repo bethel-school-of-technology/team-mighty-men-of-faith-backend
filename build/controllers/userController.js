@@ -20,7 +20,14 @@ const createUser = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
         let created = yield user_1.User.create(newUser);
         res.status(201).json({
             username: created.username,
-            userId: created.userId
+            userId: created.userId,
+            fname: created.fname,
+            lname: created.lname,
+            street: created.street,
+            city: created.city,
+            state: created.state,
+            zip: created.zip,
+            phone: created.phone
         });
     }
     else {

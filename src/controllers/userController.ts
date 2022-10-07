@@ -10,7 +10,14 @@ export const createUser: RequestHandler = async (req, res, next) => {
         let created = await User.create(newUser);
         res.status(201).json({
             username: created.username,
-            userId: created.userId
+            userId: created.userId,
+            fname: created.fname,
+            lname: created.lname,
+            street: created.street,
+            city: created.city,
+            state: created.state,
+            zip: created.zip,
+            phone: created.phone
         });
     }
     else {

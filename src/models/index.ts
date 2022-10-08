@@ -1,6 +1,7 @@
 import { Sequelize } from "sequelize";
 // import { AssociateUserReservation, ReservationFactory } from "./reservation";
 import { UserFactory } from "./user";
+import { VehicleFactory } from "./vehicle";
 
 const dbName = 'testDB';
 const username = 'ourdb';
@@ -15,5 +16,6 @@ const sequelize = new Sequelize(dbName, username, password, {
 UserFactory(sequelize);
 // ReservationFactory(sequelize);
 // AssociateUserReservation();
+VehicleFactory(sequelize);
 
 export const db = sequelize;

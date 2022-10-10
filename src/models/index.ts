@@ -1,6 +1,7 @@
 import { Sequelize } from "sequelize";
 // import { AssociateUserReservation, ReservationFactory } from "./reservation";
 import { UserFactory } from "./user";
+import { VehicleFactory } from "./vehicle";
 
 const dbName = 'testDB';
 const username = 'ourdb';

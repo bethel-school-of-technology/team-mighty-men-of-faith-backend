@@ -13,7 +13,7 @@ function VehicleFactory(sequelize) {
             primaryKey: true,
             allowNull: false
         },
-        ownerID: {
+        userId: {
             type: sequelize_1.DataTypes.INTEGER,
             allowNull: false,
         },

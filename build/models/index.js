@@ -4,6 +4,7 @@ exports.db = void 0;
 const sequelize_1 = require("sequelize");
 // import { AssociateUserReservation, ReservationFactory } from "./reservation";
 const user_1 = require("./user");
+const vehicle_1 = require("./vehicle");
 const dbName = 'testDB';
 const username = 'ourdb';
 const password = 'Fortynine9';
@@ -15,4 +16,5 @@ const sequelize = new sequelize_1.Sequelize(dbName, username, password, {
 (0, user_1.UserFactory)(sequelize);
 // ReservationFactory(sequelize);
 // AssociateUserReservation();
+(0, vehicle_1.VehicleFactory)(sequelize);
 exports.db = sequelize;

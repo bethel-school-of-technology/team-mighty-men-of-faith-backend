@@ -13,10 +13,10 @@ function VehicleFactory(sequelize) {
             primaryKey: true,
             allowNull: false
         },
-        userId: {
-            type: sequelize_1.DataTypes.NUMBER,
-            allowNull: false
-        },
+        // userId: {
+        //     type: DataTypes.NUMBER,
+        //     allowNull: false,
+        // },
         make: {
             type: sequelize_1.DataTypes.STRING,
             allowNull: false,

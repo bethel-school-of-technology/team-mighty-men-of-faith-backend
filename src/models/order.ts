@@ -1,65 +1,60 @@
 import { DataTypes, InferAttributes, InferCreationAttributes, Model, Sequelize } from "sequelize";
 
-export class User extends Model<InferAttributes<User>, InferCreationAttributes<User>>{
+export class Order extends Model<InferAttributes<Order>, InferCreationAttributes<Order>>{
     declare userId: number;
-    declare username: string;
-    declare password: string;
-    declare fname: string;
-    declare lname: string;
-    declare street: string;
-    declare city: string;
-    declare state: string;
-    declare zip: number;
-    declare phone: number;
+    declare locationId: number;
+    declare vehicleId: number;
+    declare startDate: string;
+    declare endDate: string;
+    declare delivery: boolean;
+    declare deliveryLocation: string;
+    declare insurance: boolean;
+    declare insuranceCost: number;    
     declare createdAt?: Date;
     declare updatedAt?: Date;
 }
 
-export function UserFactory(sequelize: Sequelize) {
-    User.init({
+export function OrderFactory(sequelize: Sequelize) {
+    Order.init({
         userId: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
             allowNull: false
         },
-        username: {
+        locationId: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        vehicleId: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        startDate: {
             type: DataTypes.STRING,
+            allowNull: false
+        },
+        endDate: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        delivery: {
+            type: DataTypes.BOOLEAN,
             allowNull: false,
-            unique: true
+            defaultValue: false
         },
-        password: {
+        deliveryLocation: {
             type: DataTypes.STRING,
+            allowNull: true
+        },
+        insurance: {
+            type: DataTypes.BOOLEAN,
             allowNull: false
         },
-        fname: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        lname: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        street: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        city: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        state: {
-            type: DataTypes.STRING,
-            allowNull: false            
-        },
-        zip: {
+        insuranceCost: {
             type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        phone: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
+            allowNull: true
+        },        
         createdAt: {
             type: DataTypes.DATE,
             allowNull: false,
@@ -71,7 +66,7 @@ export function UserFactory(sequelize: Sequelize) {
             defaultValue: DataTypes.NOW,
         }
     }, {
-        tableName: 'users',
+        tableName: 'orders',
         freezeTableName: true,
         sequelize
     });

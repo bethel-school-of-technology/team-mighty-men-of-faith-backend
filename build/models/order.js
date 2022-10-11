@@ -1,54 +1,50 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserFactory = exports.User = void 0;
+exports.OrderFactory = exports.Order = void 0;
 const sequelize_1 = require("sequelize");
-class User extends sequelize_1.Model {
+class Order extends sequelize_1.Model {
 }
-exports.User = User;
-function UserFactory(sequelize) {
-    User.init({
+exports.Order = Order;
+function OrderFactory(sequelize) {
+    Order.init({
         userId: {
             type: sequelize_1.DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
             allowNull: false
         },
-        username: {
+        locationId: {
+            type: sequelize_1.DataTypes.INTEGER,
+            allowNull: false
+        },
+        vehicleId: {
+            type: sequelize_1.DataTypes.INTEGER,
+            allowNull: false
+        },
+        startDate: {
             type: sequelize_1.DataTypes.STRING,
+            allowNull: false
+        },
+        endDate: {
+            type: sequelize_1.DataTypes.STRING,
+            allowNull: false
+        },
+        delivery: {
+            type: sequelize_1.DataTypes.BOOLEAN,
             allowNull: false,
-            unique: true
+            defaultValue: false
         },
-        password: {
+        deliveryLocation: {
             type: sequelize_1.DataTypes.STRING,
+            allowNull: true
+        },
+        insurance: {
+            type: sequelize_1.DataTypes.BOOLEAN,
             allowNull: false
         },
-        fname: {
-            type: sequelize_1.DataTypes.STRING,
-            allowNull: false
-        },
-        lname: {
-            type: sequelize_1.DataTypes.STRING,
-            allowNull: false
-        },
-        street: {
-            type: sequelize_1.DataTypes.STRING,
-            allowNull: false
-        },
-        city: {
-            type: sequelize_1.DataTypes.STRING,
-            allowNull: false
-        },
-        state: {
-            type: sequelize_1.DataTypes.STRING,
-            allowNull: false
-        },
-        zip: {
+        insuranceCost: {
             type: sequelize_1.DataTypes.INTEGER,
-            allowNull: false
-        },
-        phone: {
-            type: sequelize_1.DataTypes.INTEGER,
-            allowNull: false
+            allowNull: true
         },
         createdAt: {
             type: sequelize_1.DataTypes.DATE,
@@ -61,9 +57,9 @@ function UserFactory(sequelize) {
             defaultValue: sequelize_1.DataTypes.NOW,
         }
     }, {
-        tableName: 'users',
+        tableName: 'orders',
         freezeTableName: true,
         sequelize
     });
 }
-exports.UserFactory = UserFactory;
+exports.OrderFactory = OrderFactory;

@@ -13,42 +13,38 @@ function OrderFactory(sequelize) {
             primaryKey: true,
             allowNull: false
         },
-        username: {
+        locationId: {
+            type: sequelize_1.DataTypes.INTEGER,
+            allowNull: false
+        },
+        vehicleId: {
+            type: sequelize_1.DataTypes.INTEGER,
+            allowNull: false
+        },
+        startDate: {
             type: sequelize_1.DataTypes.STRING,
+            allowNull: false
+        },
+        endDate: {
+            type: sequelize_1.DataTypes.STRING,
+            allowNull: false
+        },
+        delivery: {
+            type: sequelize_1.DataTypes.BOOLEAN,
             allowNull: false,
-            unique: true
+            defaultValue: false
         },
-        password: {
+        deliveryLocation: {
             type: sequelize_1.DataTypes.STRING,
+            allowNull: true
+        },
+        insurance: {
+            type: sequelize_1.DataTypes.BOOLEAN,
             allowNull: false
         },
-        fname: {
-            type: sequelize_1.DataTypes.STRING,
-            allowNull: false
-        },
-        lname: {
-            type: sequelize_1.DataTypes.STRING,
-            allowNull: false
-        },
-        street: {
-            type: sequelize_1.DataTypes.STRING,
-            allowNull: false
-        },
-        city: {
-            type: sequelize_1.DataTypes.STRING,
-            allowNull: false
-        },
-        state: {
-            type: sequelize_1.DataTypes.STRING,
-            allowNull: false
-        },
-        zip: {
+        insuranceCost: {
             type: sequelize_1.DataTypes.INTEGER,
-            allowNull: false
-        },
-        phone: {
-            type: sequelize_1.DataTypes.INTEGER,
-            allowNull: false
+            allowNull: true
         },
         createdAt: {
             type: sequelize_1.DataTypes.DATE,

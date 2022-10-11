@@ -3,12 +3,12 @@ import { User } from "./user";
 
 export class Vehicle extends Model<InferAttributes<Vehicle>, InferCreationAttributes<Vehicle>> {
     declare vehicleID: number;
-    declare userId: number;
+    // declare userId: number;
     declare make: string;
     declare model: string;
-    declare year: number;
+    // declare year: number;
     declare photoURL: string;
-    declare location: string;
+    // declare location: string;
     declare createdAt?: Date;
     declare updatedAt?: Date;
 }
@@ -21,30 +21,27 @@ export function VehicleFactory(sequelize: Sequelize) {
         primaryKey: true,
         allowNull: false
     },
-    userId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
+
     make: {
         type: DataTypes.STRING,
         allowNull: false,
     },
     model: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
     },
-    year: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
+    // year: {
+    //     type: DataTypes.INTEGER,
+    //     allowNull: false,
+    // },
     photoURL: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
     },
-    location: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
+    // location: {
+    //     type: DataTypes.STRING,
+    //     allowNull: false,
+    // },
     createdAt: {
         type: DataTypes.DATE,
         allowNull: false,

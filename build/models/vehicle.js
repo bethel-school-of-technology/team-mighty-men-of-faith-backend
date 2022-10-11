@@ -13,6 +13,10 @@ function VehicleFactory(sequelize) {
             primaryKey: true,
             allowNull: false
         },
+        userId: {
+            type: sequelize_1.DataTypes.NUMBER,
+            allowNull: false
+        },
         make: {
             type: sequelize_1.DataTypes.STRING,
             allowNull: false,
@@ -21,18 +25,18 @@ function VehicleFactory(sequelize) {
             type: sequelize_1.DataTypes.STRING,
             allowNull: true,
         },
-        // year: {
-        //     type: DataTypes.INTEGER,
-        //     allowNull: false,
-        // },
+        year: {
+            type: sequelize_1.DataTypes.INTEGER,
+            allowNull: false,
+        },
         photoURL: {
             type: sequelize_1.DataTypes.STRING,
             allowNull: true,
         },
-        // location: {
-        //     type: DataTypes.STRING,
-        //     allowNull: false,
-        // },
+        location: {
+            type: sequelize_1.DataTypes.STRING,
+            allowNull: false,
+        },
         createdAt: {
             type: sequelize_1.DataTypes.DATE,
             allowNull: false,

@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const morgan_1 = __importDefault(require("morgan"));
+const vehicleController_1 = require("./controllers/vehicleController");
 const models_1 = require("./models");
 // import vehicleRoutes from './routes/vehicleRoutes';
 // import orderRoutes from './routes/orderRoutes';
@@ -17,6 +18,7 @@ app.use(express_1.default.urlencoded({ extended: true }));
 // app.use('/api/vehicles', vehicleRoutes);
 // app.use('/api/order', orderRoutes);
 app.use('/api/users', userRoutes_1.default);
+app.use('/api/vehicles', vehicleController_1.addVehicle);
 app.use((req, res, next) => {
     res.status(404).end();
 });

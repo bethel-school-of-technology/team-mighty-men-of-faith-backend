@@ -4,7 +4,7 @@ exports.addVehicle = void 0;
 const vehicle_1 = require("../models/vehicle");
 const addVehicle = async (req, res, next) => {
     let newVehicle = req.body;
-    if (newVehicle.vehicleID && newVehicle.vehicleID) {
+    if (newVehicle.vehicleID && newVehicle.vehicleID + newVehicle.make + newVehicle.model + newVehicle.year + newVehicle.photoURL + newVehicle.location + newVehicle.createdAt + newVehicle.updatedAt) {
         let created = await vehicle_1.Vehicle.create(newVehicle);
         res.status(201).json(created);
     }

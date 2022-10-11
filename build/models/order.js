@@ -1,12 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserFactory = exports.User = void 0;
+exports.OrderFactory = exports.Order = void 0;
 const sequelize_1 = require("sequelize");
-class User extends sequelize_1.Model {
+class Order extends sequelize_1.Model {
 }
-exports.User = User;
-function UserFactory(sequelize) {
-    User.init({
+exports.Order = Order;
+function OrderFactory(sequelize) {
+    Order.init({
         userId: {
             type: sequelize_1.DataTypes.INTEGER,
             autoIncrement: true,
@@ -61,9 +61,9 @@ function UserFactory(sequelize) {
             defaultValue: sequelize_1.DataTypes.NOW,
         }
     }, {
-        tableName: 'users',
+        tableName: 'orders',
         freezeTableName: true,
         sequelize
     });
 }
-exports.UserFactory = UserFactory;
+exports.OrderFactory = OrderFactory;

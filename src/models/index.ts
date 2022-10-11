@@ -16,5 +16,6 @@ const sequelize = new Sequelize(dbName, username, password, {
 UserFactory(sequelize);
 // ReservationFactory(sequelize);
 // AssociateUserReservation();
+VehicleFactory(sequelize);
 
 export const db = sequelize;

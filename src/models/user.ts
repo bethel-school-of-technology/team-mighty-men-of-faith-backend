@@ -34,38 +34,31 @@ export function UserFactory(sequelize: Sequelize) {
         },
         fname: {
             type: DataTypes.STRING,
-            allowNull: false,
-            unique: true
+            allowNull: false
         },
         lname: {
             type: DataTypes.STRING,
-            allowNull: false,
-            unique: true
+            allowNull: false
         },
         street: {
             type: DataTypes.STRING,
-            allowNull: false,
-            unique: true
+            allowNull: false
         },
         city: {
             type: DataTypes.STRING,
-            allowNull: false,
-            unique: true
+            allowNull: false
         },
         state: {
             type: DataTypes.STRING,
-            allowNull: false,
-            unique: true
+            allowNull: false            
         },
         zip: {
             type: DataTypes.INTEGER,
-            allowNull: false,
-            unique: true
+            allowNull: false
         },
         phone: {
             type: DataTypes.INTEGER,
-            allowNull: false,
-            unique: true
+            allowNull: false
         },
         createdAt: {
             type: DataTypes.DATE,

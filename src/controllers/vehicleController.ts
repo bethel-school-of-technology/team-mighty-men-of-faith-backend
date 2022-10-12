@@ -26,3 +26,14 @@ export const allVehicles: RequestHandler = async (req, res, next) => {
                 vehicleList
         });
 }
+
+export const getVehicle: RequestHandler = async (req, res, next) => {
+    let vehicleID = req.params.vehicleID;
+    let vehicleFound = await Vehicle.findByPk(vehicleID);
+    if (vehicleFound) {
+        res.status(200).json(vehicleFound);
+    }
+    else {
+        res.status(404).json();
+    }
+}

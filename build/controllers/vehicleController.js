@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.allVehicles = exports.addVehicle = void 0;
+exports.getVehicle = exports.allVehicles = exports.addVehicle = void 0;
 const vehicle_1 = require("../models/vehicle");
 const addVehicle = async (req, res, next) => {
     let newVehicle = req.body;
@@ -28,3 +28,14 @@ const allVehicles = async (req, res, next) => {
     });
 };
 exports.allVehicles = allVehicles;
+const getVehicle = async (req, res, next) => {
+    let vehicleID = req.params.vehicleID;
+    let vehicleFound = await vehicle_1.Vehicle.findByPk(vehicleID);
+    if (vehicleFound) {
+        res.status(200).json(vehicleFound);
+    }
+    else {
+        res.status(404).json();
+    }
+};
+exports.getVehicle = getVehicle;

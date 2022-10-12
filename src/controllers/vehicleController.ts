@@ -19,3 +19,10 @@ export const addVehicle: RequestHandler = async (req, res, next) => {
         res.status(400).send();
     }
 }
+
+export const allVehicles: RequestHandler = async (req, res, next) => {
+    let vehicleList: Vehicle[] = await Vehicle.findAll();
+            res.status(201).json({
+                vehicleList
+        });
+}

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.addVehicle = void 0;
+exports.allVehicles = exports.addVehicle = void 0;
 const vehicle_1 = require("../models/vehicle");
 const addVehicle = async (req, res, next) => {
     let newVehicle = req.body;
@@ -21,3 +21,10 @@ const addVehicle = async (req, res, next) => {
     }
 };
 exports.addVehicle = addVehicle;
+const allVehicles = async (req, res, next) => {
+    let vehicleList = await vehicle_1.Vehicle.findAll();
+    res.status(201).json({
+        vehicleList
+    });
+};
+exports.allVehicles = allVehicles;

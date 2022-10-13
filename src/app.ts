@@ -4,6 +4,7 @@ import { db } from './models';
 // import vehicleRoutes from './routes/vehicleRoutes';
 // import orderRoutes from './routes/orderRoutes';
 import userRoutes from './routes/userRoutes';
+import cityRoutes from './routes/cityRoutes';
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(express.urlencoded({extended: true}));
 // app.use('/api/vehicles', vehicleRoutes);
 // app.use('/api/order', orderRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/cities', cityRoutes);
 
 app.use((req: Request, res: Response, next: NextFunction) => {
     res.status(404).end();

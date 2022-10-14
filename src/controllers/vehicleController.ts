@@ -3,7 +3,7 @@ import { Vehicle } from "../models/vehicle";
 
 export const addVehicle: RequestHandler = async (req, res, next) => {
     let newVehicle: Vehicle = req.body;
-    if (newVehicle.vehicleID && newVehicle.vehicleID) {
+    if (newVehicle.make) {
         let created = await Vehicle.create(newVehicle);
         res.status(201).json({
             make: created.make,
@@ -21,9 +21,9 @@ export const addVehicle: RequestHandler = async (req, res, next) => {
 }
 
 export const allVehicles: RequestHandler = async (req, res, next) => {
-    let vehicleList: Vehicle[] = await Vehicle.findAll();
+    let vehicle = await Vehicle.findAll();
             res.status(201).json({
-                vehicleList
+                vehicle
         });
 }
 

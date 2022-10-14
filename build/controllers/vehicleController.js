@@ -4,7 +4,7 @@ exports.getVehicle = exports.allVehicles = exports.addVehicle = void 0;
 const vehicle_1 = require("../models/vehicle");
 const addVehicle = async (req, res, next) => {
     let newVehicle = req.body;
-    if (newVehicle.vehicleID && newVehicle.vehicleID) {
+    if (newVehicle.make) {
         let created = await vehicle_1.Vehicle.create(newVehicle);
         res.status(201).json({
             make: created.make,
@@ -22,9 +22,9 @@ const addVehicle = async (req, res, next) => {
 };
 exports.addVehicle = addVehicle;
 const allVehicles = async (req, res, next) => {
-    let vehicleList = await vehicle_1.Vehicle.findAll();
+    let vehicle = await vehicle_1.Vehicle.findAll();
     res.status(201).json({
-        vehicleList
+        vehicle
     });
 };
 exports.allVehicles = allVehicles;

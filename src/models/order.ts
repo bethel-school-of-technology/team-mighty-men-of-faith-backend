@@ -1,6 +1,7 @@
 import { DataTypes, InferAttributes, InferCreationAttributes, Model, Sequelize } from "sequelize";
 
 export class Order extends Model<InferAttributes<Order>, InferCreationAttributes<Order>>{
+    declare orderID: number;
     declare userId: number;
     declare locationId: number;
     declare vehicleId: number;
@@ -16,10 +17,15 @@ export class Order extends Model<InferAttributes<Order>, InferCreationAttributes
 
 export function OrderFactory(sequelize: Sequelize) {
     Order.init({
-        userId: {
+        orderID: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
+            allowNull: false
+        },
+        userId: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
             allowNull: false
         },
         locationId: {

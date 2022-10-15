@@ -3,7 +3,7 @@ import { User } from "./user";
 
 export class Vehicle extends Model<InferAttributes<Vehicle>, InferCreationAttributes<Vehicle>> {
     declare vehicleID: number;
-    declare ownerID: number;
+    // declare userId: number;
     declare make: string;
     declare model: string;
     declare year: number;
@@ -21,17 +21,19 @@ export function VehicleFactory(sequelize: Sequelize) {
         primaryKey: true,
         allowNull: false
     },
-    ownerID: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
+    
+    // userId: {
+    //     type: DataTypes.NUMBER,
+    //     allowNull: false,
+    // },
+
     make: {
         type: DataTypes.STRING,
         allowNull: false,
     },
     model: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
     },
     year: {
         type: DataTypes.INTEGER,
@@ -39,7 +41,7 @@ export function VehicleFactory(sequelize: Sequelize) {
     },
     photoURL: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
     },
     location: {
         type: DataTypes.STRING,

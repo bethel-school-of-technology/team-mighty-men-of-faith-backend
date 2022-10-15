@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.VehicleFactory = exports.Vehicle = void 0;
 const sequelize_1 = require("sequelize");
+// import { Order } from "./order";
 class Vehicle extends sequelize_1.Model {
 }
 exports.Vehicle = Vehicle;
@@ -54,3 +55,7 @@ function VehicleFactory(sequelize) {
     });
 }
 exports.VehicleFactory = VehicleFactory;
+// export function AssociateVehicleOrder() {
+//     Vehicle.hasMany(Order, { foreignKey: 'vehicleId' });
+//     Order.belongsTo(Vehicle, { foreignKey: 'vehicleId' });
+// }

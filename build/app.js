@@ -7,7 +7,7 @@ const express_1 = __importDefault(require("express"));
 const morgan_1 = __importDefault(require("morgan"));
 const models_1 = require("./models");
 // import vehicleRoutes from './routes/vehicleRoutes';
-// import orderRoutes from './routes/orderRoutes';
+const orderRoutes_1 = __importDefault(require("./routes/orderRoutes"));
 const userRoutes_1 = __importDefault(require("./routes/userRoutes"));
 const app = (0, express_1.default)();
 app.use((0, morgan_1.default)('dev'));
@@ -15,7 +15,7 @@ app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 // routes
 // app.use('/api/vehicles', vehicleRoutes);
-// app.use('/api/order', orderRoutes);
+app.use('/api/orders', orderRoutes_1.default);
 app.use('/api/users', userRoutes_1.default);
 app.use((req, res, next) => {
     res.status(404).end();

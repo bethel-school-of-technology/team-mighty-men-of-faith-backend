@@ -48,8 +48,9 @@ export const loginUser: RequestHandler = async (req, res, next) => {
 
 export const getUser: RequestHandler = async (req, res, next) => {
     let user: User | null = await verifyUser(req);
-
-    if (user) {
+    let reqId = parseInt(req.params.id);
+    if (user && user.userId == reqId) {
+    // if (user) {
         let { username } = user;
         res.status(200).json({
             username

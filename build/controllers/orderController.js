@@ -3,10 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.createOrder = void 0;
 const order_1 = require("../models/order");
 const auth_1 = require("../services/auth");
-// export const getAllBookmarks: RequestHandler = async (req, res, next) => {
-//     let bookmarks = await Bookmark.findAll();
-//     res.status(200).json(bookmarks);
-// }
 const createOrder = async (req, res, next) => {
     let user = await (0, auth_1.verifyUser)(req);
     if (!user) {

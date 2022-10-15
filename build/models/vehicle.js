@@ -14,17 +14,17 @@ function VehicleFactory(sequelize) {
             primaryKey: true,
             allowNull: false
         },
-        ownerID: {
-            type: sequelize_1.DataTypes.INTEGER,
-            allowNull: false,
-        },
+        // userId: {
+        //     type: DataTypes.NUMBER,
+        //     allowNull: false,
+        // },
         make: {
             type: sequelize_1.DataTypes.STRING,
             allowNull: false,
         },
         model: {
             type: sequelize_1.DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
         year: {
             type: sequelize_1.DataTypes.INTEGER,
@@ -32,7 +32,7 @@ function VehicleFactory(sequelize) {
         },
         photoURL: {
             type: sequelize_1.DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
         location: {
             type: sequelize_1.DataTypes.STRING,

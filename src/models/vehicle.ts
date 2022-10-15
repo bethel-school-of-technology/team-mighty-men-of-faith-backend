@@ -1,5 +1,5 @@
 import { DataTypes, InferAttributes, InferCreationAttributes, Model, Sequelize } from "sequelize";
-import { User } from "./user";
+// import { Order } from "./order";
 
 export class Vehicle extends Model<InferAttributes<Vehicle>, InferCreationAttributes<Vehicle>> {
     declare vehicleID: number;
@@ -64,3 +64,7 @@ export function VehicleFactory(sequelize: Sequelize) {
    }); 
 }
 
+// export function AssociateVehicleOrder() {
+//     Vehicle.hasMany(Order, { foreignKey: 'vehicleId' });
+//     Order.belongsTo(Vehicle, { foreignKey: 'vehicleId' });
+// }

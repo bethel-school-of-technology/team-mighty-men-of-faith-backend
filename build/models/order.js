@@ -1,16 +1,21 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.OrderFactory = exports.Order = void 0;
+exports.AssociateUserOrder = exports.OrderFactory = exports.Order = void 0;
 const sequelize_1 = require("sequelize");
+const user_1 = require("./user");
 class Order extends sequelize_1.Model {
 }
 exports.Order = Order;
 function OrderFactory(sequelize) {
     Order.init({
-        userId: {
+        orderId: {
             type: sequelize_1.DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
+            allowNull: false
+        },
+        userId: {
+            type: sequelize_1.DataTypes.INTEGER,
             allowNull: false
         },
         locationId: {
@@ -40,7 +45,8 @@ function OrderFactory(sequelize) {
         },
         insurance: {
             type: sequelize_1.DataTypes.BOOLEAN,
-            allowNull: false
+            allowNull: false,
+            defaultValue: false
         },
         insuranceCost: {
             type: sequelize_1.DataTypes.INTEGER,
@@ -63,3 +69,8 @@ function OrderFactory(sequelize) {
     });
 }
 exports.OrderFactory = OrderFactory;
+function AssociateUserOrder() {
+    user_1.User.hasMany(Order, { foreignKey: 'userId' });
+    Order.belongsTo(user_1.User, { foreignKey: 'userId' });
+}
+exports.AssociateUserOrder = AssociateUserOrder;

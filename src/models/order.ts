@@ -1,6 +1,8 @@
 import { DataTypes, InferAttributes, InferCreationAttributes, Model, Sequelize } from "sequelize";
+import { User } from "./user";
 
 export class Order extends Model<InferAttributes<Order>, InferCreationAttributes<Order>>{
+    declare orderId: number;
     declare userId: number;
     declare locationId: number;
     declare vehicleId: number;
@@ -16,10 +18,14 @@ export class Order extends Model<InferAttributes<Order>, InferCreationAttributes
 
 export function OrderFactory(sequelize: Sequelize) {
     Order.init({
-        userId: {
+        orderId: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
+            allowNull: false
+        },
+        userId: {
+            type: DataTypes.INTEGER,
             allowNull: false
         },
         locationId: {
@@ -49,7 +55,8 @@ export function OrderFactory(sequelize: Sequelize) {
         },
         insurance: {
             type: DataTypes.BOOLEAN,
-            allowNull: false
+            allowNull: false,
+            defaultValue: false
         },
         insuranceCost: {
             type: DataTypes.INTEGER,
@@ -70,4 +77,9 @@ export function OrderFactory(sequelize: Sequelize) {
         freezeTableName: true,
         sequelize
     });
+}
+
+export function AssociateUserOrder() {
+    User.hasMany(Order, { foreignKey: 'userId' });
+    Order.belongsTo(User, { foreignKey: 'userId' });
 }

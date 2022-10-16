@@ -49,7 +49,6 @@ const getUser = async (req, res, next) => {
     let user = await (0, auth_1.verifyUser)(req);
     let reqId = parseInt(req.params.id);
     if (user && user.userId == reqId) {
-        // if (user) {
         let { username } = user;
         res.status(200).json({
             username

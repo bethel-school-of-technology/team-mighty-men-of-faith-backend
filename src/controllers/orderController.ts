@@ -4,6 +4,21 @@ import { User } from "../models/user";
 import { verifyUser } from "../services/auth";
 
 
+// export const getAllOrders: RequestHandler = async (req, res, next) => {
+//     let user: User | null = await verifyUser(req);
+
+//     if (!user) {
+//         return res.status(403).send();
+//     }
+    
+//     let orders = await Order.findAll();
+//     res.status(200).json(orders);
+
+//     if (!orders) {
+//         return res.status(403).send();
+//     }
+// }
+
 export const createOrder: RequestHandler = async (req, res, next) => {
     let user: User | null = await verifyUser(req);
 
@@ -61,5 +76,26 @@ export const updateOrder: RequestHandler = async (req, res, next) => {
     }
     else {
         res.status(400).json();
+    }
+}
+
+export const deleteOrder: RequestHandler = async (req, res, next) => {
+    let user: User | null = await verifyUser(req);
+
+    if (!user) {
+        return res.status(403).send();
+    }
+
+    let orderId = req.params.orderId;
+    let order = await Order.findOne( { where: {orderId: orderId, userId: user.userId} });
+
+    if (order) {
+        await Order.destroy({
+            where: {orderId: orderId}
+        });
+        res.status(200).json();
+    }
+    else {
+        res.status(404).json({});
     }
 }

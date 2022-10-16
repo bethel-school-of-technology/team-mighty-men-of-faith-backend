@@ -7,5 +7,5 @@ const router = (0, express_1.Router)();
 router.post('/', orderController_1.createOrder);
 router.get('/:orderId', orderController_1.getOneOrder);
 router.put('/:orderId', orderController_1.updateOrder);
-// router.delete('/:orderId', deleteOrder);
+router.delete('/:orderId', orderController_1.deleteOrder);
 exports.default = router;

@@ -63,3 +63,10 @@ export const updateOrder: RequestHandler = async (req, res, next) => {
         res.status(400).json();
     }
 }
+
+export const allOrders: RequestHandler = async (req, res, next) => {
+    let order = await Order.findAll();
+            res.status(201).json({
+                order
+        });
+}

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateOrder = exports.getOneOrder = exports.createOrder = void 0;
+exports.deleteOrder = exports.allOrders = exports.updateOrder = exports.getOneOrder = exports.createOrder = void 0;
 const order_1 = require("../models/order");
 const auth_1 = require("../services/auth");
 const createOrder = async (req, res, next) => {
@@ -54,3 +54,24 @@ const updateOrder = async (req, res, next) => {
     }
 };
 exports.updateOrder = updateOrder;
+const allOrders = async (req, res, next) => {
+    let order = await order_1.Order.findAll();
+    res.status(201).json({
+        order
+    });
+};
+exports.allOrders = allOrders;
+const deleteOrder = async (req, res, next) => {
+    let orderId = req.params.orderId;
+    let orderFound = await order_1.Order.findByPk(orderId);
+    if (orderFound) {
+        await order_1.Order.destroy({
+            where: { orderId: orderId }
+        });
+        res.status(200).json();
+    }
+    else {
+        res.status(404).json;
+    }
+};
+exports.deleteOrder = deleteOrder;

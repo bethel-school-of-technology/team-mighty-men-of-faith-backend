@@ -70,3 +70,18 @@ export const allOrders: RequestHandler = async (req, res, next) => {
                 order
         });
 }
+
+export const deleteOrder: RequestHandler = async (req, res, next) => {
+    let orderId = req.params.orderId;
+    let orderFound = await Order.findByPk(orderId);
+
+    if (orderFound) {
+        await Order.destroy({
+            where: { orderId: orderId }
+        });
+        res.status(200).json();
+    }
+    else {
+        res.status(404).json;
+    }
+}

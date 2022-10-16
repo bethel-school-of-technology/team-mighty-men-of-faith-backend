@@ -14,9 +14,7 @@ const sequelize = new sequelize_1.Sequelize(dbName, username, password, {
     dialect: 'mysql'
 });
 (0, user_1.UserFactory)(sequelize);
-
 (0, order_1.OrderFactory)(sequelize);
-(0, order_1.AssociateUserOrder)();
 (0, vehicle_1.VehicleFactory)(sequelize);
-
+(0, order_1.AssociateUserOrder)();
 exports.db = sequelize;

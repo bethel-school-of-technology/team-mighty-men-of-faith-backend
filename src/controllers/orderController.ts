@@ -22,3 +22,44 @@ export const createOrder: RequestHandler = async (req, res, next) => {
         res.status(400).send();
     }
 }
+
+export const getOneOrder: RequestHandler = async (req, res, next) => {
+    let user: User | null = await verifyUser(req);
+
+    if (!user) {
+        return res.status(403).send();
+    }
+
+    let orderId = req.params.orderId;
+    let order = await Order.findOne( { where: {orderId: orderId, userId: user.userId} });
+    if (order) {
+        res.status(200).json(order);
+    }
+    else {
+        res.status(404).json({});
+    }
+}
+
+export const updateOrder: RequestHandler = async (req, res, next) => {
+    let user: User | null = await verifyUser(req);
+
+    if (!user) {
+        return res.status(403).send();
+    }
+
+    let orderId = req.params.orderId;
+    let newOrder: Order = req.body;
+    
+    let foundOrder = await Order.findOne( { where: {orderId: orderId, userId: user.userId} });
+    
+    if (foundOrder && foundOrder.orderId == newOrder.orderId
+        && newOrder.userId) {
+            await Order.update(newOrder, {
+                where: { orderId: orderId }
+            });
+            res.status(200).json();
+    }
+    else {
+        res.status(400).json();
+    }
+}

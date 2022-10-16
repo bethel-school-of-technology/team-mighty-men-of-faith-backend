@@ -65,15 +65,26 @@ export const updateOrder: RequestHandler = async (req, res, next) => {
 }
 
 export const allOrders: RequestHandler = async (req, res, next) => {
-    let order = await Order.findAll();
+    let user: User | null = await verifyUser(req);
+
+    if (!user) {
+        return res.status(403).send();
+    }
+
+    let order = await Order.findAll( { where: {userId: user.userId} });
             res.status(201).json({
                 order
         });
 }
 
 export const deleteOrder: RequestHandler = async (req, res, next) => {
+        let user: User | null = await verifyUser(req);
+
+    if (!user) {
+        return res.status(403).send();
+    }
     let orderId = req.params.orderId;
-    let orderFound = await Order.findByPk(orderId);
+    let orderFound = await Order.findOne( { where: {orderId: orderId, userId: user.userId} });
 
     if (orderFound) {
         await Order.destroy({

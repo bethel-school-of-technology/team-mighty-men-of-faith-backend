@@ -8,6 +8,6 @@ router.post('/', orderController_1.createOrder);
 router.get('/', orderController_1.allOrders);
 router.get('/:orderId', orderController_1.getOneOrder);
 router.put('/:orderId', orderController_1.updateOrder);
-router.delete('/:delete', deleteOrder);
+router.delete('/:orderId', orderController_1.deleteOrder);
 // router.delete('/:orderId', deleteOrder);
 exports.default = router;

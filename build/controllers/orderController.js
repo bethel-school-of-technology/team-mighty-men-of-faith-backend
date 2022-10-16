@@ -55,15 +55,23 @@ const updateOrder = async (req, res, next) => {
 };
 exports.updateOrder = updateOrder;
 const allOrders = async (req, res, next) => {
-    let order = await order_1.Order.findAll();
+    let user = await (0, auth_1.verifyUser)(req);
+    if (!user) {
+        return res.status(403).send();
+    }
+    let order = await order_1.Order.findAll({ where: { userId: user.userId } });
     res.status(201).json({
         order
     });
 };
 exports.allOrders = allOrders;
 const deleteOrder = async (req, res, next) => {
+    let user = await (0, auth_1.verifyUser)(req);
+    if (!user) {
+        return res.status(403).send();
+    }
     let orderId = req.params.orderId;
-    let orderFound = await order_1.Order.findByPk(orderId);
+    let orderFound = await order_1.Order.findOne({ where: { orderId: orderId, userId: user.userId } });
     if (orderFound) {
         await order_1.Order.destroy({
             where: { orderId: orderId }

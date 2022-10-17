@@ -63,3 +63,36 @@ export const updateOrder: RequestHandler = async (req, res, next) => {
         res.status(400).json();
     }
 }
+
+export const allOrders: RequestHandler = async (req, res, next) => {
+    let user: User | null = await verifyUser(req);
+
+    if (!user) {
+        return res.status(403).send();
+    }
+
+    let order = await Order.findAll( { where: {userId: user.userId} });
+            res.status(201).json({
+                order
+        });
+}
+
+export const deleteOrder: RequestHandler = async (req, res, next) => {
+        let user: User | null = await verifyUser(req);
+
+    if (!user) {
+        return res.status(403).send();
+    }
+    let orderId = req.params.orderId;
+    let orderFound = await Order.findOne( { where: {orderId: orderId, userId: user.userId} });
+
+    if (orderFound) {
+        await Order.destroy({
+            where: { orderId: orderId }
+        });
+        res.status(200).json();
+    }
+    else {
+        res.status(404).json;
+    }
+}

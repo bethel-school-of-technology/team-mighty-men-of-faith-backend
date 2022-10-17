@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateOrder = exports.getOneOrder = exports.createOrder = void 0;
+exports.deleteOrder = exports.allOrders = exports.updateOrder = exports.getOneOrder = exports.createOrder = void 0;
 const order_1 = require("../models/order");
 const auth_1 = require("../services/auth");
 const createOrder = async (req, res, next) => {
@@ -54,3 +54,32 @@ const updateOrder = async (req, res, next) => {
     }
 };
 exports.updateOrder = updateOrder;
+const allOrders = async (req, res, next) => {
+    let user = await (0, auth_1.verifyUser)(req);
+    if (!user) {
+        return res.status(403).send();
+    }
+    let order = await order_1.Order.findAll({ where: { userId: user.userId } });
+    res.status(201).json({
+        order
+    });
+};
+exports.allOrders = allOrders;
+const deleteOrder = async (req, res, next) => {
+    let user = await (0, auth_1.verifyUser)(req);
+    if (!user) {
+        return res.status(403).send();
+    }
+    let orderId = req.params.orderId;
+    let orderFound = await order_1.Order.findOne({ where: { orderId: orderId, userId: user.userId } });
+    if (orderFound) {
+        await order_1.Order.destroy({
+            where: { orderId: orderId }
+        });
+        res.status(200).json();
+    }
+    else {
+        res.status(404).json;
+    }
+};
+exports.deleteOrder = deleteOrder;

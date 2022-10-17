@@ -4,6 +4,9 @@ import { User } from "../models/user";
 import { verifyUser } from "../services/auth";
 
 
+//***********DELETE THESE BEFORE COMMITTING ANYTHING*************
+
+
 // export const getAllOrders: RequestHandler = async (req, res, next) => {
 //     let user: User | null = await verifyUser(req);
 
@@ -79,23 +82,26 @@ export const updateOrder: RequestHandler = async (req, res, next) => {
     }
 }
 
-export const deleteOrder: RequestHandler = async (req, res, next) => {
-    let user: User | null = await verifyUser(req);
+//***********DELETE THESE BEFORE COMMITTING ANYTHING*************
 
-    if (!user) {
-        return res.status(403).send();
-    }
 
-    let orderId = req.params.orderId;
-    let order = await Order.findOne( { where: {orderId: orderId, userId: user.userId} });
+// export const deleteOrder: RequestHandler = async (req, res, next) => {
+//     let user: User | null = await verifyUser(req);
 
-    if (order) {
-        await Order.destroy({
-            where: {orderId: orderId}
-        });
-        res.status(200).json();
-    }
-    else {
-        res.status(404).json({});
-    }
-}
+//     if (!user) {
+//         return res.status(403).send();
+//     }
+
+//     let orderId = req.params.orderId;
+//     let order = await Order.findOne( { where: {orderId: orderId, userId: user.userId} });
+
+//     if (order) {
+//         await Order.destroy({
+//             where: {orderId: orderId}
+//         });
+//         res.status(200).json();
+//     }
+//     else {
+//         res.status(404).json({});
+//     }
+// }

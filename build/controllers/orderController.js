@@ -1,8 +1,20 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteOrder = exports.updateOrder = exports.getOneOrder = exports.createOrder = void 0;
+exports.updateOrder = exports.getOneOrder = exports.createOrder = void 0;
 const order_1 = require("../models/order");
 const auth_1 = require("../services/auth");
+//***********DELETE THESE BEFORE COMMITTING ANYTHING*************
+// export const getAllOrders: RequestHandler = async (req, res, next) => {
+//     let user: User | null = await verifyUser(req);
+//     if (!user) {
+//         return res.status(403).send();
+//     }
+//     let orders = await Order.findAll();
+//     res.status(200).json(orders);
+//     if (!orders) {
+//         return res.status(403).send();
+//     }
+// }
 const createOrder = async (req, res, next) => {
     let user = await (0, auth_1.verifyUser)(req);
     if (!user) {
@@ -54,21 +66,21 @@ const updateOrder = async (req, res, next) => {
     }
 };
 exports.updateOrder = updateOrder;
-const deleteOrder = async (req, res, next) => {
-    let user = await (0, auth_1.verifyUser)(req);
-    if (!user) {
-        return res.status(403).send();
-    }
-    let orderId = req.params.orderId;
-    let order = await order_1.Order.findOne({ where: { orderId: orderId, userId: user.userId } });
-    if (order) {
-        await order_1.Order.destroy({
-            where: { orderId: orderId }
-        });
-        res.status(200).json();
-    }
-    else {
-        res.status(404).json({});
-    }
-};
-exports.deleteOrder = deleteOrder;
+//***********DELETE THESE BEFORE COMMITTING ANYTHING*************
+// export const deleteOrder: RequestHandler = async (req, res, next) => {
+//     let user: User | null = await verifyUser(req);
+//     if (!user) {
+//         return res.status(403).send();
+//     }
+//     let orderId = req.params.orderId;
+//     let order = await Order.findOne( { where: {orderId: orderId, userId: user.userId} });
+//     if (order) {
+//         await Order.destroy({
+//             where: {orderId: orderId}
+//         });
+//         res.status(200).json();
+//     }
+//     else {
+//         res.status(404).json({});
+//     }
+// }

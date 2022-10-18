@@ -16,7 +16,10 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 const cors = require('cors');
-app.use(cors());
+const corsOptions = {
+    origin: ['http://localhost:3000', 'https://carmigo.org/']
+};
+app.use(cors(corsOptions));
 
 // routes
 

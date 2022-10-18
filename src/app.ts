@@ -1,4 +1,4 @@
-import express, { NextFunction, Request, Response } from 'express'
+import express, { application, NextFunction, Request, Response } from 'express'
 import morgan from 'morgan';
 import { addVehicle } from './controllers/vehicleController';
 import { db } from './models';
@@ -14,6 +14,9 @@ app.use(morgan('dev'));
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+
+const cors = require('cors');
+app.use(cors());
 
 // routes
 

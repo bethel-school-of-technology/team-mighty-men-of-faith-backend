@@ -3,14 +3,10 @@ import { allOrders, createOrder, deleteOrder, getOneOrder, updateOrder } from '.
 
 const router = Router();
 
-// router.get('/', getAllOrders);
-
 router.post('/', createOrder);
 router.get('/', allOrders)
 router.get('/:orderId', getOneOrder);
 router.put('/:orderId', updateOrder);
 router.delete('/:orderId', deleteOrder);
-
-// router.delete('/:orderId', deleteOrder);
 
 export default router;

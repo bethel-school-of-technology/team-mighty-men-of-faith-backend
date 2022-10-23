@@ -1,5 +1,5 @@
 import { DataTypes, InferAttributes, InferCreationAttributes, Model, Sequelize } from "sequelize";
-// import { Order } from "./order";
+
 
 export class Vehicle extends Model<InferAttributes<Vehicle>, InferCreationAttributes<Vehicle>> {
     declare vehicleID: number;
@@ -21,12 +21,6 @@ export function VehicleFactory(sequelize: Sequelize) {
         primaryKey: true,
         allowNull: false
     },
-    
-    // userId: {
-    //     type: DataTypes.NUMBER,
-    //     allowNull: false,
-    // },
-
     make: {
         type: DataTypes.STRING,
         allowNull: false,

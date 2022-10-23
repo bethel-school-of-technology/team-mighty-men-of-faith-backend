@@ -13,6 +13,11 @@ const app = (0, express_1.default)();
 app.use((0, morgan_1.default)('dev'));
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
+const cors = require('cors');
+const corsOptions = {
+    origin: ['http://localhost:3000', 'http://localhost:3001', 'https://carmigo.org/']
+};
+app.use(cors(corsOptions));
 // routes
 app.use('/api/orders', orderRoutes_1.default);
 app.use('/api/vehicles', vehicleRoutes_1.default);
@@ -21,7 +26,7 @@ app.use((req, res, next) => {
     res.status(404).end();
 });
 //Syncing our database
-models_1.db.sync({ alter: true }).then(() => {
+models_1.db.sync({ alter: false }).then(() => {
     console.info("connected to the database!");
 });
 app.listen(3000);

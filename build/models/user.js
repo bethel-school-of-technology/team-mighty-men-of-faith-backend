@@ -50,10 +50,6 @@ function UserFactory(sequelize) {
             type: sequelize_1.DataTypes.INTEGER,
             allowNull: false
         },
-        AdminJS: {
-            type: sequelize_1.DataTypes.BOOLEAN,
-            allowNull: true
-        },
         createdAt: {
             type: sequelize_1.DataTypes.DATE,
             allowNull: false,

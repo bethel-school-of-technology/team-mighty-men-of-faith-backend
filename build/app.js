@@ -12,6 +12,7 @@ const sequelize_1 = __importDefault(require("@adminjs/sequelize"));
 const orderRoutes_1 = __importDefault(require("./routes/orderRoutes"));
 const vehicleRoutes_1 = __importDefault(require("./routes/vehicleRoutes"));
 const userRoutes_1 = __importDefault(require("./routes/userRoutes"));
+//import { User } from './models/user';
 const app = (0, express_1.default)();
 app.use((0, morgan_1.default)('dev'));
 adminjs_1.default.registerAdapter({
@@ -21,7 +22,7 @@ adminjs_1.default.registerAdapter({
 const admin = new adminjs_1.default({
     databases: [models_1.db],
     rootPath: '/admin', //path to adminjs dashboard
-    // resources: [User],
+    //resources: [User],
 });
 // adminJS router
 const adminRouter = express_2.default.buildRouter(admin);

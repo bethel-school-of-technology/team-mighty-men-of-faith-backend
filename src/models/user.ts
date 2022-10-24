@@ -10,8 +10,7 @@ export class User extends Model<InferAttributes<User>, InferCreationAttributes<U
     declare city: string;
     declare state: string;
     declare zip: number;
-    declare phone: number;
-    declare AdminJS: boolean;
+    declare phone: number;    
     declare createdAt?: Date;
     declare updatedAt?: Date;
 }
@@ -60,10 +59,6 @@ export function UserFactory(sequelize: Sequelize) {
         phone: {
             type: DataTypes.INTEGER,
             allowNull: false
-        },
-        AdminJS: {
-            type: DataTypes.BOOLEAN,
-            allowNull: true
         },
         createdAt: {
             type: DataTypes.DATE,

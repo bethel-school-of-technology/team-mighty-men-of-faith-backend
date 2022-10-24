@@ -7,11 +7,11 @@ import AdminJSSequelize from '@adminjs/sequelize';
 import orderRoutes from './routes/orderRoutes';
 import vehicleRoutes from './routes/vehicleRoutes';
 import userRoutes from './routes/userRoutes';
+//import { User } from './models/user';
 
 
 const app = express();
 app.use(morgan('dev'));
-
 
 AdminJS.registerAdapter({
     Resource: AdminJSSequelize.Resource,
@@ -21,7 +21,7 @@ AdminJS.registerAdapter({
 const admin = new AdminJS({
     databases: [db], // connect resource here
     rootPath: '/admin', //path to adminjs dashboard
-    // resources: [User],
+    //resources: [User],
 });
 
 // adminJS router
